@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c15t25hg2sno0"]
+[gd_scene load_steps=37 format=3 uid="uid://c15t25hg2sno0"]
 
 [ext_resource type="Texture2D" uid="uid://bc0f3jd4sjxm6" path="res://assets/Farming Sprites  (PRO... lol)/tiles/tiles.png" id="1_h2pgi"]
 [ext_resource type="Script" path="res://Player.gd" id="2_ihswv"]
@@ -5097,6 +5097,9 @@ physics_layer_0/collision_mask = 2
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_72ctm")
 sources/0 = SubResource("TileSetAtlasSource_lpgiy")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fcb78"]
+polygon = PackedVector2Array(-8, -2, -5.5, -1.5, -4, 5.5, -8, 5.5)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2k7p"]
 texture = ExtResource("4_76yhp")
 0:0/0 = 0
@@ -5134,6 +5137,7 @@ texture = ExtResource("4_76yhp")
 0:1/0/physics_layer_0/angular_velocity = 0.0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, 1, 8, 1, 8, 6, 6, 6)
 1:1/0 = 0
+1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_fcb78")
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1, -5, 1.5, -4, 5.5, -8, 5.5)
@@ -5571,6 +5575,7 @@ texture = ExtResource("4_76yhp")
 9:14/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_fsrea"]
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_e2k7p")
@@ -5778,8 +5783,14 @@ script = ExtResource("2_ihswv")
 position = Vector2(93.5, 115)
 scale = Vector2(0.964286, 1)
 sprite_frames = SubResource("SpriteFrames_y18n4")
-frame_progress = 0.137977
+frame_progress = 0.768833
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(93, 122)
 shape = SubResource("RectangleShape2D_m6pjr")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.541176, 0.247059, 1)
+energy = 0.5
+shadow_enabled = true
+max_distance = 999.0
